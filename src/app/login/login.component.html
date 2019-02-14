@@ -1,0 +1,198 @@
+<div class="row pt-5">
+  <div class="col-md-4 mx-auto">
+    <div class="rounded-0">
+
+      <div class="login_form" *ngIf="loginForm">
+
+        <div class="card-body">
+          <div>
+            <img src="/assets/img/logonew.png" class="text-center" class="login_logo" />
+          </div>
+          <form class="form" [formGroup]="signInForm" (ngSubmit)="loginUser()">
+            <div class="form-group" >
+              <input required id="Email" formControlName="email" type="email" class="form-control" 
+                placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+            </div>
+            <div class="form-group" >
+              <input required id="password" formControlName="password" type="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="role" translate>User Role:</label>
+              <select name="role" id="role" class="form-control" formControlName="role" (change)="onChange($event.target.value)">
+                <option value="ROLE_DRIVER" translate>Driver</option>
+                <option value="ROLE_USER" translate>User</option>
+                <option value="ROLE_ADMIN" translate>Admin</option>
+                <option value="ROLE_SUPPLIER" translate>Supplier</option>
+              </select>
+            </div>
+            <div class="form-group" *ngIf="hide">
+              <input required id="website" name="website" type="type" class="form-control" placeholder="website">
+            </div>
+            <!-- 
+            <div class="form-group" [class.has-error]="fullNameControl.invalid" >
+              <label for="role" translate>User Role:</label>
+              <select name="role" id="role" [(ngModel)]="Role" class="form-control" #fullNameControl="ngModel" (change)="onChange($event.target.value)">
+                <option value="ROLE_DRIVER" translate>Driver</option>
+                <option value="ROLE_USER" translate>User</option>
+                <option value="ROLE_ADMIN" translate>Admin</option>
+                <option value="ROLE_SUPPLIER" translate>Supplier</option>
+              </select>
+              <span class="help-block" *ngIf="fullNameControl.invalid">
+                Select User_Role
+              </span>
+            </div>
+            <div class="form-group" [class.has-error]="fullNameControl.invalid" *ngIf="hide">
+              <input required id="website" [(ngModel)]="website" name="website" type="type" class="form-control" #fullNameControl="ngModel"
+                placeholder="website">
+              <span class="help-block" *ngIf="fullNameControl.invalid">
+                Enter Website
+              </span>
+            </div> -->
+         
+            <div class="shadow-none mb-5 bg-light rounded">
+              <button type="submit" class="btn btn-success width100  rounded-0" translate>Login</button>
+            </div>
+          </form>
+
+          <div class="form-group">
+            <div class="text-center">
+              <p translate class="account_yet">Don't have account yet?</p>
+              <a routerLink="/register" translate> Sign Up</a>
+            </div>
+            <p class="text-center">
+              <a (click)="forgotPwd()" style="cursor: pointer;">
+                <u translate>Forgot Password</u>
+              </a>
+            </p>
+            <p>{{outputMessage}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="login_form" *ngIf="forgotPwdDiv">
+
+        <div class="card-body">
+          <div class="login_logo">
+            <img src="/assets/img/logonew.png" width="330" class="text-center" />
+          </div>
+          <form class="forgotForm">
+            <div class="form-group" [class.has-error]="fullNameControl.invalid">
+              <input required id="Email" [(ngModel)]="Email" name="Email" type="text" class="form-control " #fullNameControl="ngModel"
+                placeholder="Email">
+              <span class="help-block" *ngIf="fullNameControl.invalid" data-ng-transclude>
+                Enter Email required
+              </span>
+            </div>
+            
+            <div class="form-group">
+              <button (click)="forgotPass()" type="button" class="btn btn-success width100  rounded-0" translate>Submit</button>
+            </div>
+          </form>
+
+          <div class="form-group">
+            <p class="text-center">
+              <a (click)="signin()" style="cursor: pointer;" translate>Sign In</a>
+            </p>
+
+            <p translate>{{outputMessage}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<footer class="page-footer font-small black pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">
+          <a href="http://taxideals.ch/#/">
+            <img src="/assets/img/logonewwhite.png" width="200" style="color: #f5072e" alt="rent a van zurich">
+          </a>
+        </h5>
+        <p translate>The Taxideals.ch was started in 2007.The booking app was founded using services like tracking and booking the Taxi
+          and cabs, as well as the mobile request acceptance features. An airport may determine prices or organize different
+          queues for taxi services of different qualities and prices.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">About Taxi</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="http://taxideals.ch/#!">About US</a>
+          </li>
+          <li>
+            <a href="#!">Terms and condition</a>
+          </li>
+          <li>
+            <a href="http://taxideals.ch/contactform.html">Contact</a>
+          </li>
+          <li>
+            <a href="http://taxideals.ch/help/faq/user/index.html">Help</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">SocialMedia</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="https://www.facebook.com/taxideals.swiss/#!">FaceBook</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/taxideals_ch/#!">Twitter</a>
+          </li>
+          <li>
+            <a href="#!">Google++</a>
+          </li>
+          <li>
+            <a href="contact@taxideals.ch/#!">Gmail</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-6">© 2018 Copyright: taxideals.ch
+    <a href="https://mdbootstrap.com/bootstrap-tutorial/" class="text-black"> </a>- All Rights Reserved
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->

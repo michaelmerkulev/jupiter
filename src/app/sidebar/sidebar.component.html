@@ -1,0 +1,16 @@
+<aside class="sidemenu" *ngIf="sidebar.visible">
+  
+  <ul class="sidebar-menu">
+    <li *ngFor="let menu of menus">
+      <a routerLink="{{menu.link}}" routerLinkActive="activeMenu">{{menu.text}}</a>
+    </li>
+  </ul>
+</aside>
+<script>
+  $(document).ready(function () {
+    $('.sidebar-menu > li > a').click(function () {
+      $(this).addClass('activeMenu');
+
+    }); 
+  });
+</script>

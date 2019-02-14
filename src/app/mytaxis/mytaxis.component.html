@@ -1,0 +1,50 @@
+ 
+<div class="content-wrapper">
+<div class="container-fluid">
+  <form #form="ngForm" >
+
+   <div class=form-group>
+   </div>
+   <div class="boxes">
+
+<div class="content table-responsive table-full-width">
+    <table class="table table-bordered table-hover">
+      
+            <tr bgcolor="#FF851B"  >
+              <th  class="info" >Id</th>
+              <th translate>NAME</th>
+              <th translate>CAR TYPE</th>
+              <th translate>Phone Number</th>
+              <th translate>Action</th>
+              
+                 
+         </tr>
+            
+            <tr (click)="OnSelect(driverId)" *ngFor = "let exp of outputdata" >
+              <td>{{exp.driverId}}</td>
+              <td><a [routerLink]="['/trip']" translate>{{exp.name}}</a></td>
+              <td translate>{{exp.cartype}}</td>
+              <td translate>{{exp.phoneNumber}}</td>
+              <td><i class="fa fa-pencil"></i>&nbsp;<i (click)="deleteDriver(exp.driverId)" class="fa fa-trash"></i>
+              </td>
+             
+          
+            </tr>
+          <!-- <table class="table table-hover table-striped">
+                                        <td><a [routerLink]="['/trip',trip.name]">{{exp.name}}</a></td>
+
+                            <tr>
+                                <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                            </tr>
+                            <tr *ngFor="let row of tableData1.dataRows">
+                                <td *ngFor="let response of row">{{response}}</td>
+                            </tr>
+                           
+                        </table> -->
+
+          </table>
+          </div>
+        </div>
+  </form>
+  </div>
+  </div>

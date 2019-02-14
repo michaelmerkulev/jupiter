@@ -1,0 +1,65 @@
+<div class="row pt-5">
+    <div class="col-md-5 mx-auto">
+        <div class="card ">
+            <div class="card-body ">
+                <div class="login_logo">
+                    <img src="/assets/img/logonew.png" width="230" class="text-center" />
+                </div>
+                <form class="form" [formGroup]="registerForm" (ngSubmit)="addUpdatesupplier()">
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group">
+                            <label class="control-label" translate>FirstName</label>
+                            <input id="firstName" type="text" class="form-control" formControlName="firstName"  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate>Last name</label>
+                            <input id="lastName" type="text" class="form-control" formControlName="lastName"  [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group">
+                            <label class="control-label" translate>Email</label>
+                            <input id="email" type="email" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.email">Email Format Valid</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate>Password</label>
+                            <input id="password" type="password" class="form-control" formControlName="password" minlength="6" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                <div *ngIf="f.password.errors.minlength">Password should contain 6 characters at least.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group">
+                            <label class="control-label" translate>PhoneNumber</label>
+                            <input id="phonenumber" type="text" class="form-control" formControlName="phonenumber"  [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }">
+                            <div *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback">
+                                <div *ngIf="f.phonenumber.errors.required">PhoneNumber is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group " >
+                            <label for="address" class="control-label" translate>Address</label>
+                            <input id="address" required type="text" name="address" class="form-control" autocorrect="off" 
+                            [(ngModel)]="address" #addressControl="ngModel"
+                            autocapitalized="off" spellcheck="off"   #search    placeholder=""   
+                             (input)="addressValue=$event.target.value"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-btn text-center">
+                        <button [disabled]="loading"   class="btn btn-success" translate>Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,38 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <form #form="ngForm" >
+  
+     <div class=form-group>
+     </div>
+     <div class="boxes">
+  
+  <div class="content table-responsive table-full-width">
+      <table class="table table-bordered table-hover">
+        <tr bgcolor="#FF851B"  >
+          <th  class="info" >Sno</th>
+        <th>TaxiNumber</th>
+        <th>Seats</th>
+         <th>Year</th>
+         <th>BasePrice</th>
+         <th>PeakPrice</th>
+         <th>CarType</th>
+         <th>Action</th>
+
+        </tr>
+        <tr (click)="OnSelect(driverId)" *ngFor = "let exp of outputdata;let i=index ">
+          <td >{{i+1}}</td>
+            <td>{{exp.taxiNumber}}</td>
+            <td>{{exp.seats}}</td>
+            <td>{{exp.year}}</td>
+            <td>{{exp.basePrice}}</td>
+             <td>{{exp.peakPrice}}</td>
+            <td>{{exp.carType}}</td>
+            <td><i class="fa fa-pencil"></i>&nbsp;<i (click)="deleteDriver(exp.driverId)" class="fa fa-trash"></i>
+
+          </tr>
+           </table>
+            </div>
+          </div>
+    </form>
+    </div>
+    </div>

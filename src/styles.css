@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+ .width100{
+    width: 100% !important;
+}
+
+
+.content-wrapper{
+    min-height: 300px;
+    z-index: 800;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    margin-left: 230px;
+    margin-top: 70px;
+}
+.login-form-control{
+    border: 0;
+    border-bottom: 1px solid #ff8e2d;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.login_logo{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.header_bg{
+    background-color: #444 !important;
+    margin-bottom: 15px;
+}
+
+.boxes{
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 6px 0 #ccc;
+
+}
+
+.padd0{
+    padding: 0 !important;
+}
+
+
+
+.card {
+    background-color: #fff;
+    border: 0;
+    border-radius: 4px;
+   /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);*/
+    color: #000;
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 15px 18px;
+    position: relative;
+    width: 100%;
+
+       
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
+    color: #252422;
+    position: relative;
+    
+}
+
+.card .card-title {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    letter-spacing: 1px;
+}
+
+.mb0 {
+    margin-bottom: 0px !important;
+}
+
+.mb5 {
+    margin-bottom: 5px !important;
+}
+
+.card .card-content {
+    padding: 2px 0;
+    position: relative;
+    text-align: left;
+}

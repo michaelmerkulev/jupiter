@@ -1,0 +1,33 @@
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <p>
+                        <button [hidden]="mapDataMode === 'online'" class="btn btn-success" (click)="setMapDataMode('online')">Switch to Online Mode</button>
+                        <button [hidden]="mapDataMode === 'offline'" class="btn btn-info" (click)="setMapDataMode('offline')">Switch to Offline Mode</button>
+                    </p>
+                    <div class="map">
+                        <agm-map [latitude]="lat" [longitude]="lng" [fullscreenControl]='true' [mapTypeControl]='true'>
+
+                            <div *ngIf="onlineDatas">
+                                <div *ngFor="let onlineData of onlineDatas">
+                                    <agm-marker [latitude]="onlineData.lat" [longitude]="onlineData.lng"
+                                        [markerDraggable]='false' [iconUrl]="icon"></agm-marker>
+                                </div>
+                            </div>
+
+                            <div *ngIf="offlineDatas">
+                                <div *ngFor="let offlineData of offlineDatas">
+                                    <agm-marker [latitude]="offlineData.latitude" [longitude]="offlineData.longitude"
+                                        [markerDraggable]='false' [iconUrl]="icon"></agm-marker>
+                                </div>
+                            </div>
+                        </agm-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

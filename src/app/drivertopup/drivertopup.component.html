@@ -1,0 +1,69 @@
+<div class="content-wrapper">
+  <div class="main-content">
+      <div class="container-fluid">
+          <div class="boxes">
+              <div class="row" [hidden]="edited">
+                  <div *ngIf="myTaxis" class="col-md-10">
+                      <div class="content table-responsive table-full-width table-striped">
+                          <table class="table table-bordered table-hover">
+                              <tr>
+                                  <th>Driver Name</th>
+                                  <th>Driver Status</th>
+                                  <th>Phone Number</th>
+                                  <th>Car Type</th>
+                                  <th>Actions</th>
+                              </tr>
+                              <tr *ngFor="let taxi of myTaxis">
+                                  <td>{{taxi.name}}</td>
+                                  <td>{{taxi.driverStatus}}</td>
+                                  <td>{{taxi.phoneNumber}}</td>
+                                  <td>{{taxi.cartype}}</td>
+                                  <td>
+                                      <button (click)="editDriver(taxi)" type="button" class="btn btn-info">Top UP</button>&nbsp;
+                                  </td>
+                              </tr>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          
+
+              <div *ngIf="!add">
+                  <div class="row" [hidden]="!edited">
+                      <div class="col-md-10">
+                          <h3>Edit Driver</h3>
+                          <form class="form" [formGroup]="topupForm"  (ngSubmit)="addUpdateDriverTopup()" *ngIf="user">
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                        <label for="">Amount</label>
+                                        <input  formControlName="amount" type="number" class="form-control rounded-0" required [ngClass]="{ 'is-invalid': submitted && f.amount.errors }">
+                                        <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                                            <div *ngIf="f.amount.errors.required">Amount is required</div>
+                                        </div>
+                                    </div>
+                                  <div class="col-md-6">
+                                        <label for="">Wallet Type</label>
+                                        <select  formControlName="wallet_type" class="form-control rounded-0">
+                                            <option>CASH</option>
+                                            <option>CARD</option>
+                                        </select>
+                                        
+                                    </div>
+                              </div>
+
+                              
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                     <button  type="submit" class="btn btn-success">Update</button>&nbsp;
+                                      <button (click)="cancel()" type="button" class="btn btn-info">Cancel</button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

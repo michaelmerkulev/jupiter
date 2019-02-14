@@ -1,0 +1,50 @@
+<div class="row pt-5">
+  <div class="col-md-5 mx-auto">
+    <div class="card ">
+
+      <div class="login_logo">
+        <img src="/assets/img/logonew.png" width="230" class="text-center" />
+      </div>
+
+      <div class="card-body ">
+        <form class="form-group">
+          <fieldset class="form-group">
+            <label for="basePrice">basePrice</label>
+            <input [(ngModel)]="vehicle.basePrice" class="form-control" id="basePrice" name="basePrice">
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="carType">carType</label>
+            <input [(ngModel)]="vehicle.carType" class="form-control" id="carType" name="carType">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="peakPrice">peakPrice</label>
+            <input [(ngModel)]="vehicle.peakPrice" class="form-control" id="peakPrice" name="peakPrice">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="price">price</label>
+            <input [(ngModel)]="vehicle.price" class="form-control" id="price" name="price">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="seats">seats</label>
+            <input [(ngModel)]="vehicle.seats" class="form-control" id="seats" name="seats">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="taxiNumber">taxiNumber</label>
+            <input [(ngModel)]="vehicle.taxiNumber"  class="form-control" id="taxiNumber" name="taxiNumber">
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="vehicleBrand">vehicleBrand</label>
+            <input [(ngModel)]="vehicle.vehicleBrand"  class="form-control" id="vehicleBrand" name="vehicleBrand">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="year">year</label>
+            <input [(ngModel)]="vehicle.year"  class="form-control" id="year" name="year">
+          </fieldset>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

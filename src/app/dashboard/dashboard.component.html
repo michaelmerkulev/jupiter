@@ -1,0 +1,149 @@
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row mb0">
+            <div class="col-md-3">
+                <div class="card">
+                    <h3 class="card-title float-right">{{this.offlineDatas.length}}</h3>
+                    <div class="card-content float-left">
+                        <p class="category mb5">Drivers</p>
+                        <a routerLink="/driver">View Drivers&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" >
+                    <h3 class="card-title float-right">{{this.Taxi}}</h3>
+                    <div class="card-content float-left" >
+                        <p class="category mb5">Taxi</p>
+                        <a routerLink="/driver">View Taxi&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3 class="card-title float-right">{{this.driverStatus}}</h3>
+                    <div class="card-content float-left">
+                        <p class="category mb5">On Duty Drivers</p>
+                        <a routerLink="/driver">View Drivers&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3 class="card-title float-right">{{this.offDutyDriver}}</h3>
+                    <div class="card-content float-left">
+                        <p class="category mb5">Off Duty Drivers</p>
+                        <a routerLink="/driver">View Drivers&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="false">
+            <div class="col-md-12">
+                <div class="card">
+                    <p>
+                        <button [hidden]="mapDataMode === 'online'" class="btn btn-success" (click)="setMapDataMode('online')">Switch to Online Mode</button>
+                        <button [hidden]="mapDataMode === 'offline'" class="btn btn-info" (click)="setMapDataMode('offline')">Switch to Offline Mode</button>
+                    </p>
+                    <div class="map">
+                        <agm-map [latitude]="lat" [longitude]="lng" [fullscreenControl]='true' [mapTypeControl]='true'>
+
+                            <div *ngIf="onlineDatas">
+                                <div *ngFor="let onlineData of onlineDatas">
+                                    <agm-marker [latitude]="onlineData.lat" [longitude]="onlineData.lng"
+                                        [markerDraggable]='false' [iconUrl]="icon"></agm-marker>
+                                </div>
+                            </div>
+
+                            <div *ngIf="offlineDatas">
+                                <div *ngFor="let offlineData of offlineDatas">
+                                    <agm-marker [latitude]="offlineData.latitude" [longitude]="offlineData.longitude"
+                                        [markerDraggable]='false' [iconUrl]="icon"></agm-marker>
+                                </div>
+                            </div>
+                        </agm-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card" *ngIf="showMyTaxisChart">
+                    <h1>My Taxis</h1>
+                    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h1>Trips</h1>
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" [hidden]="edited">
+            <div class="content table-responsive table-full-width table-striped">
+                            <table class="table table-bordered table-hover">
+                                <tr >
+                                   <th class="info">Index</th>
+                                    <th>ID</th>
+                                   <th>Driver Name</th>
+                                   <th>Phone Number</th>
+                                   <th>Action</th>
+                                </tr>
+                                <tr *ngFor="let taxi of offlineDatas;let i=index">
+                                    <td>{{i+1}}</td>
+                                   <td>{{taxi.id}}</td>
+                                   <td>{{taxi.name}}</td>
+                                   <td>{{taxi.phoneNumber}}</td>
+                                   <td>
+                                        <button (click)="adds(taxi.id)" (click)="hideElement = !hideElement" type="button" class="btn btn-info">Edit Driver</button>&nbsp;
+                                      </td>
+                                </tr>
+                            </table>
+                        </div>    
+                        <div class="box-content" *ngIf="hideElement">
+                            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                            <thead>
+                            <tr >
+                                <th class="hidden">Id</th>
+                                <th>Name</th>
+                                <th>Driver Status</th>
+                                <th>CarType</th>
+                                <th>PhoneNumber</th>
+                                <th>Price</th>
+                                <th>BasePrice</th>
+                                <th>Star</th>
+                                <th>WaitingTime</th>
+                                                           </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                               <td class="hidden">{{taxi.id}}</td>
+                               
+                                <td class="center">{{taxi.name}} </td>
+                                <td class="center">{{taxi.driverStatus}}</td>
+                                <td class="center">{{taxi.cartype}}</td>
+                                <td class="center">{{taxi.phoneNumber}}</td>
+                                <td class="center">{{taxi.price}}</td>
+                                <td class="center">{{taxi.basePrice}}</td> 
+                                <td class="center">{{taxi.star}}</td>
+                                <td class="center"><button (click)="hideElement = !hideElement" type="button" class="btn btn-info">Cancel</button></td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                
+                                </div>
+                        
+                    </div>
+    </div>
+</div>

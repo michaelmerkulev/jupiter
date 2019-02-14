@@ -1,0 +1,76 @@
+
+  <div class="content-wrapper">
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="boxes">
+              <div>
+                    <div class="row" >
+                        <div class="col-md-10">
+                        
+                            <form class="form">
+                                   <!-- <div class="col-sm-12 file-upload">
+                                            <div class="form-group row">
+                                                 <img *ngIf="user.imageUrl" width=300 height=300 src="{{user.imageUrl}}" />
+                                            </div>
+                                        </div> -->
+                                      
+  
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label for="">DriverName</label>
+                                        <input [(ngModel)]="trips.driverName" name="driverName"  class="form-control rounded-0" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Source</label>
+                                        <input [(ngModel)]="trips.source" name="source" class="form-control rounded-0" required>
+                                    </div>
+                                </div>
+  
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label for="">Destination</label>
+                                        <input [(ngModel)]="trips.destination" name="destination"  class="form-control rounded-0" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Price</label>
+                                        <input [(ngModel)]="trips.price" name="price"  class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label for="">BasePrice</label>
+                                        <input [(ngModel)]="trips.base" name="base" class="form-control rounded-0" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label for="">RideStatus</label>
+                                        <input [(ngModel)]="trips.rideStatus" name="rideStatus"  class="form-control rounded-0" required>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                        <div class="col-md-6">
+                                                <label for="">TotalPrice</label>
+                                                <input [(ngModel)]="trips.totalPrice" name="totalPrice"  class="form-control rounded-0" required minlength="9">
+                                            </div>   
+                                    <div class="col-md-6">
+                                        <label for="">travelTime</label>
+                                        <input [(ngModel)]="trips.travelTime" name="travelTime"  class="form-control " required minlength="6">
+                                    </div>
+                                </div>
+                         
+                            </form>
+                        </div>
+                    </div>
+              
+                </div>
+              
+  
+            </div>
+        </div>
+    </div>
+  </div>
+
+         
+                
+  

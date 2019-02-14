@@ -1,0 +1,27 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+
+     <form #form="ngForm">
+      <div class=form-group>
+      </div>
+      <div class="boxes">
+        <div class="content table-responsive table-full-width">
+          <table class="table table-bordered">
+            <tr>
+              <th>NAME</th>
+              <th>CAR TYPE</th>
+              <th>Phone Number</th>
+              <th>Action</th>
+            </tr>
+            <tr *ngFor="let exp of outputdata" class="center">
+              <td>{{exp.name}}</td>
+              <td>{{exp.cartype}}</td>
+              <td>{{exp.phoneNumber}}</td>
+              <td><button class="btn btn-success" (click)="onSelete(exp.id)">Approve</button></td>
+            </tr>
+                 </table>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

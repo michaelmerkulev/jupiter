@@ -1,0 +1,8 @@
+.ngForm .form-group{
+    margin-bottom: 30px;
+}
+login_form .btn-success {
+	color: #f2c144;
+	background-color: #fff;
+	border-color: #f2c144;
+}

@@ -1,0 +1,232 @@
+<div class="content-wrapper">
+  <div class="main-content">
+      <div class="container-fluid">
+          <div class="boxes">
+              <div class="row" [hidden]="edited">
+                  <div *ngIf="myTaxis" class="col-md-10">
+                      <p>
+                          <button (click)="addDriver()" type="button" class="btn btn-success">Add New Driver</button>
+                      </p>
+                      <div class="content table-responsive table-full-width table-striped">
+                          <table class="table table-bordered table-hover">
+                              <tr>
+                                  <th>Driver Name</th>
+                                  <th>Driver Status</th>
+                                  <th>Phone Number</th>
+                                  <th>Car Type</th>
+                                  <th>Actions</th>
+                              </tr>
+                              <tr *ngFor="let taxi of myTaxis">
+                                  <td>{{taxi.name}}</td>
+                                  <td>{{taxi.driverStatus}}</td>
+                                  <td>{{taxi.phoneNumber}}</td>
+                                  <td>{{taxi.cartype}}</td>
+                                  <td>
+                                      <button (click)="editDriver(taxi)" type="button" class="btn btn-info">Edit Driver</button>&nbsp;
+                                      <button (click)="removeTaxi(taxi)" type="button" class="btn btn-danger">Delete</button>
+                                  </td>
+                              </tr>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          <!--    <div *ngIf="add">
+                  <div class="row" [hidden]="!edited">
+                      <div class="col-md-10">
+                          <h3>Add New Driver</h3>
+                          <form class="form">
+                             
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">First Name</label>
+                                      <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">Last Name</label>
+                                      <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control rounded-0" required>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Email</label>
+                                      <input [(ngModel)]="user.email" name="email" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">Password</label>
+                                      <input [(ngModel)]="user.password" name="password" type="password" class="form-control" required>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Phone Number</label>
+                                      <input [(ngModel)]="user.phoneNumber" name="phoneNumber" type="number" class="form-control rounded-0" required minlength="9">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Address</label>
+                                   <!--    <input [(ngModel)]="user.address" name="address" type="text"  placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off"  class="form-control" required #search>
+                                   <input id="address" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search >
+                                   <input type="text"  [(ngModel)]="user.address" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off"  class="form-control" #search [ngModelOptions]="{standalone: true}" >
+                                      </div>
+                             
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">City Code</label>
+                                      <input [(ngModel)]="user.cityCode" name="cityCode" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                 
+                              </div>
+                             
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Base Price</label>
+                                      <input [(ngModel)]="user.basePrice" name="basePrice" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">Price</label>
+                                      <input [(ngModel)]="user.price" name="price" type="text" class="form-control rounded-0" required>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Peak Price</label>
+                                      <input [(ngModel)]="user.peakPrice" name="peakPrice" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">VehicleBrand</label>
+                                      <input [(ngModel)]="user.vehicleBrand" name="vehicleBrand" type="text" class="form-control" required>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Seats</label>
+                                      <input [(ngModel)]="user.seats" name="seats" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Taxi Number</label>
+                                      <input [(ngModel)]="user.taxiNumber" name="taxiNumber" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">Vehicle Year</label>
+                                      <input [(ngModel)]="user.vehicleYear" name="basePrice" type="text" class="form-control rounded-0" required>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                               <div class="col-md-6">
+                                      <label for="">Website</label>
+                                      <input [(ngModel)]="user.website" name="website" type="text" class="form-control " required minlength="6">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                   <div class="col-md-6">
+                                      <label for="">Car Type</label>
+                                    <!--  <input [(ngModel)]="user.carType" name="carType" type="text" class="form-control rounded-0" required>
+                                      <select id="carType" required class="form-control rounded-0"name="carType" [(ngModel)]="user.carType" >
+                                          <option value="Taxi">Taxi</option>
+                                          <option value="Transport">Transport</option>
+                                          <option value="Auto">Auto</option>
+                                          <option value="Taxi4">Taxi 4</option>
+                                          <option value="Taxi6">Taxi 6</option>
+                                      </select>   
+                                  </div>
+                                 
+                                 </div>
+                                 <div class="form-group">
+                                      <div class="col-md-6">
+                                              <label for="photo" class="control-label" translate>Image Upload</label>
+                                         
+                                              <input id="photo" required type="file" class="form-control-file" name="photo"  [(ngModel)]="photo" #fileuploadControl="ngModel"
+                                                  (change)="loadImageFileAsURL($event)">
+                                             
+                                          </div>
+                                 </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <button (click)="addUpdateDriver('add') " type="button" class="btn btn-success">Save</button>&nbsp;
+                                      <button (click)="cancel()" type="button" class="btn btn-info">Cancel</button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div> -->
+
+              <div *ngIf="!add">
+                  <div class="row" [hidden]="!edited">
+                      <div class="col-md-10">
+                          <h3>Edit Driver</h3>
+                          <form class="form" *ngIf="user">
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Driver Name</label>
+                                      <input [(ngModel)]="user.drivername" name="drivername" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <!-- <div class="col-md-6">
+                                      <label for="">Last Name</label>
+                                      <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control rounded-0" required>
+                                  </div> -->
+                              </div>
+
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Price</label>
+                                      <input [(ngModel)]="user.price" name="price" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">Seats</label>
+                                      <input [(ngModel)]="user.seats" name="seats" type="password" class="form-control" required>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Phone Number</label>
+                                      <input [(ngModel)]="user.driverPhonenumber" name="driverPhonenumber" type="number" class="form-control rounded-0" required minlength="9">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">PeakPrice</label>
+                                      <input [(ngModel)]="user.peakPrice" name="peakPrice" type="text" class="form-control rounded-0" required>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">TaxiNumber</label>
+                                      <input [(ngModel)]="user.taxiNumber" name="taxiNumber" type="text" class="form-control rounded-0" required>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">Car Type</label>
+                                      <input [(ngModel)]="user.carType" name="carType" type="text" class="form-control rounded-0" required>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                      <label for="">Licence Number</label>
+                                      <input [(ngModel)]="user.licenseNumber" name="licenceNumber" type="text" class="form-control " required minlength="6">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="">VehicleBrand</label>
+                                      <input [(ngModel)]="user.vehicleBrand" name="vehicleBrand" type="text" class="form-control " required minlength="6">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-md-6">
+                                     <button (click)="addUpdateDriver('edit') " type="button" class="btn btn-success">Update</button>&nbsp;
+                                      <button (click)="cancel()" type="button" class="btn btn-info">Cancel</button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

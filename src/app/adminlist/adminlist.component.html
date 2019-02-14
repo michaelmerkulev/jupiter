@@ -1,0 +1,95 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+
+     <form #form="ngForm">
+      <div class=form-group>
+      </div>
+      <div class="boxes">
+        <div class="content table-responsive table-full-width">
+          <form>
+          
+                  <div class="form-group " >
+              <label for="id" class="control-label" translate>id</label>
+              <input id="id" required type="number" class="form-control" name="id" [(ngModel)]="id" #idControl="ngModel" >
+             
+          </div>
+            <button (click)="onShow(id)" (click)="hideElement = !hideElement" type="button" class="btn btn-info" [value]="searchValue">Search</button>&nbsp;&nbsp;
+          </form>
+        </div>
+      </div>
+
+    </form>
+    <div class="row">
+      <div class="col-md-6">
+     <div class="card" *ngIf="showMyTaxisChart">
+              <h1>My Taxis</h1>
+              <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"></canvas>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+              <h1>Trips</h1>
+              <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                  [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+          </div>
+      </div>
+      <div>
+    <div *ngIf="showMyTaxisChart">
+        <canvas baseChart [data]="barChartData" [labels]="barChartLabels" [chartType]="barChartType"></canvas>
+       </div>
+  </div>
+
+  </div>
+  
+   
+<div class="boxes" *ngIf="hideElement">
+            <div class="content table-responsive table-full-width">
+              <table class="table table-bordered table-hover">
+                <tr>
+                  <th class="info">Index</th>
+    
+                  <th>Basefare</th>
+                  <th>Destination</th>
+                  <th>Km</th>
+                  <th>Price</th>
+                  <th>Source</th>
+                  <th>TotalPrice</th>
+                  <th>Action</th>
+                </tr>
+                <tr *ngFor="let exp of outputdata;let i=index ">
+                  <td>{{i+1}}</td>
+                  <td>{{exp.base}}</td>
+                  <td>{{exp.destination}}</td>
+                  <td>{{exp.km}}</td>
+                  <td>{{exp.price}}</td>
+                  <td>{{exp.source}}</td>
+                  <td>{{exp.userTotalPrice}}</td>
+                  <td style="width: 80px">
+                    <i class="fa fa-search action" (click)="onShow(exp.id)"></i>
+                   </td>
+                </tr>
+              </table>
+            </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+            <div class="card" *ngIf="showMyTaxisChart">
+                <h1>My Taxis</h1>
+                <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" *ngIf="showMyTaxisbarChart">
+                <h1>Trips</h1>
+                <canvas baseChart [data]="barChartData" [labels]="barChartLabels" [chartType]="barChartType"></canvas>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+ 
+    
+  

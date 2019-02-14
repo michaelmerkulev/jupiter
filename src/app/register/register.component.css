@@ -1,0 +1,14 @@
+/* .form:hover{
+    background-color: #ff1313;
+    border-color: #f2c144;  
+    color: #f2c144;
+
+} */
+.form .login_logo src{
+    height: 100px;
+}
+.form .btn-success:hover{
+	color: #f2c144;
+	background-color: #ff1313;
+	border-color: #f2c144;
+}

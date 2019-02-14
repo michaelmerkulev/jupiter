@@ -1,0 +1,30 @@
+.navbar{
+    z-index: 8;
+}
+.navbar .nav-link:hover{
+    /* color: #f2c144; */
+	border-color: hsl(43, 87%, 61%);
+    color: yellow;
+
+    font-size: 1.25rem;
+}
+ul.menuItem.langBox {
+    width: 70px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #000;
+    background-color: #444;
+    position: relative;
+    cursor: default;
+}
+ul.menuItem.langBox .lang.english {
+    background-image: url(../assets/img/flag/united-kingdom-flag-icon.png);
+}
+.lang {
+    background-color: #444
+}
+.lang_image {
+    padding-right: 15px
+}
+a {
+    text-decoration: none;
+}

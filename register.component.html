@@ -1,0 +1,131 @@
+<div class="row pt-5">
+    <div class="col-md-5 mx-auto">
+        <div class="card ">
+            <div class="card-body ">
+                <div class="login_logo">
+                    <img src="/assets/img/logonew.png" width="230" class="text-center" />
+                </div>
+                <form class="form">
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group" [class.has-error]="firstNameControl.invalid && firstNameControl.touched">
+                            <label for="firstName" class="control-label" translate>FirstName</label>
+                            <input id="firstName" required type="text" class="form-control" name="firstName" [(ngModel)]="firstName" #firstNameControl="ngModel">
+                            <span class="help-block" *ngIf="firstNameControl.invalid && firstNameControl.touched">
+                                FirstName required
+                            </span>
+                        </div>
+                        <div class="form-group" [class.has-error]="lastNameControl.invalid && lastNameControl.touched" [class.has-success]="lastNameControl.valid">
+                            <label for="lastName" class="control-label" translate>LastName</label>
+                            <input id="lastName" required type="text" class="form-control" name="lastName" [(ngModel)]="lastName" #lastNameControl="ngModel">
+                            <span class="help-block" *ngIf="lastNameControl.invalid && lastNameControl.touched">
+                                LastName required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group" [class.has-error]="EmailControl.invalid && EmailControl.touched">
+                            <label for="email" class="control-label" translate>Email</label>
+                            <input id="email" required type="text" class="form-control" name="email" [(ngModel)]="email" #EmailControl="ngModel">
+                            <span class="help-block" *ngIf="EmailControl.invalid && EmailControl.touched">
+                                Email required
+                            </span>
+                        </div>
+                        <div class="col-sm-12 padd0">
+                            <div class="form-group " [class.has-error]="passwordControl.invalid && passwordControl.touched">
+                                <label for="password" class="control-label" translate>Password</label>
+                                <input id="password" required type="password" class="form-control" name="password" [(ngModel)]="password" #passwordControl="ngModel">
+                                <span class="help-block" *ngIf="passwordControl.invalid && passwordControl.touched">Password required
+                                </span>
+                            </div>
+                            <div class="form-group " [class.has-error]="phoneNumberControl.invalid && phoneNumberControl.touched">
+                                <label for="phoneNumber" class="control-label" translate>phoneNumber</label>
+                                <input id="phoneNumber" required type="number" class="form-control" name="phoneNumber" [(ngModel)]="phoneNumber" #phoneNumberControl="ngModel">
+                                <span class="help-block" *ngIf="phoneNumberControl.invalid && phoneNumberControl.touched">
+                                    phoneNumber required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 padd0">
+                            <div class="form-group " [class.has-error]="addressControl.invalid && addressControl.touched">
+                                <label for="address" class="control-label" translate>Address</label>
+                                <input id="address" required type="text" name="address" class="form-control" autocorrect="off" 
+                                [(ngModel)]="address" #addressControl="ngModel"
+                                autocapitalized="off" spellcheck="off"   #search    placeholder=""   
+                                 (input)="addressValue=$event.target.value"/>
+                            </div>
+                            <div class="form-group " [class.has-error]="codeControl.invalid && codeControl.touched">
+                                <label for="code" class="control-label" translate>CityCode</label>
+                                <input id="code" required class="form-control" name="code" [(ngModel)]="code" #codeControl="ngModel">
+                                <span class="help-block" *ngIf="codeControl.invalid && codeControl.touched">
+                                    City code required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group " [class.has-error]="roleControl.invalid && roleControl.touched">
+                            <label for="role" class="control-label" translate>Role</label>
+                            <select id="role" required class="form-control" name="role" [(ngModel)]="role" #roleControl="ngModel" (change)="onChange($event.target.value)">
+                                <option value="ROLE_DRIVER">Driver</option>
+                                <option value="ROLE_USER">User</option>
+                                <option value="ROLE_SUPPLIER">Supplier</option>
+                            </select>
+                            <span class="help-block" *ngIf="roleControl.invalid && roleControl.touched">
+                                Role required
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 padd0" *ngIf="hide">
+                        <div class="form-group " [class.has-error]="carTypeControl.invalid && carTypeControl.touched">
+                            <label for="carType" class="control-label" translate>CarType</label>
+                                    <select id="carType" required class="form-control" name="carType" [(ngModel)]="carType" #carTypeControl="ngModel" >
+                                    <option value="Taxi">Taxi</option>
+                                    <option value="Transport">Transport</option>
+                                    <option value="Auto">Auto</option>
+                                </select>   
+                                <span class="help-block" *ngIf="carTypeControl.invalid && carTypeControl.touched">
+                                CarType required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group " [class.has-error]="websiteControl.invalid && websiteControl.touched">
+                            <label for="website" class="control-label" translate>Website</label>
+                            <input id="website" required type="text" class="form-control" name="website" [(ngModel)]="website" #websiteControl="ngModel">
+                            <span class="help-block" *ngIf="websiteControl.invalid && websiteControl.touched">
+                                Website required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 padd0">
+                        <div class="form-group">
+                            <label for="terms" class="control-label" translate>I agree to <a [routerLink]="['/terms-and-conditions']">terms and conditions</a></label>
+                            <input id="terms" required type="checkbox" class="form-control" name="agreeTerms" [(ngModel)]="agreeTerms" #agreeTermsControl="ngModel">
+                            <span class="help-block" *ngIf="agreeTermsControl.invalid && agreeTermsControl.touched">
+                                You must agree to terms and conditions.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 padd0 file-upload">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label for="photo" class="control-label" translate>Image Upload</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input id="photo" required type="file" class="form-control-file" name="photo"  [(ngModel)]="photo" #fileuploadControl="ngModel"
+                                    (change)="loadImageFileAsURL($event)">
+                                <span class="help-block" *ngIf="fileuploadControl.invalid && fileuploadControl.touched">
+                                    File required
+                                </span>
+                            </div>
+                           </div>
+                    </div>
+                    <div class="col-sm-12 form-btn text-center">
+                        <button (click)="addUpdatesupplier()" type="button" class="btn btn-success" translate>Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

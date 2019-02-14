@@ -1,0 +1,90 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div *ngFor="let item of items | async">{{item.id}} {{item.online}}</div>
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-sm-4 col-xs-12">
+          <input type="text" placeholder="{{'Source Address' | translate}}" autocorrect="off" autocapitalize="off" spellcheck="off"
+            class="form-control ds-input" role="combobox" aria-expanded="true" aria-owns="algolia-autocomplete-listbox-0" formControlName="source"
+            id="source" name="source" #search style="position: relative; vertical-align: top;" />
+        </div>
+
+        <div class="form-group col-sm-4 col-xs-12">
+          <input type="text" placeholder="{{'Destination Address' | translate}}" autocorrect="off" autocapitalize="off" spellcheck="off"
+            class="form-control" formControlName="destination" id="destination" name="destination" #destinationsearch />
+        </div>
+        <div class="col-sm-3  col-xs-12">
+          <select class="form-control" formControlName="cartype" id="cartype" name="cartype">
+            <option vlaue="item" *ngFor="let item of ['All','Taxi','TA','CA','LOO']">{{item}}</option>
+          </select>
+        </div>
+        <div class="col-sm-1  col-xs-12">
+          <button type="submit" class="btn_searchTaxi" [disabled]="!searchForm.valid"></button>
+        </div>
+      </div>
+    </form>
+
+    <div class="map">
+      <agm-map [latitude]="lat" [longitude]="lng" [fullscreenControl]='true' [mapTypeControl]=t rue>
+        <agm-marker [latitude]="52.683858" [longitude]="8.855982" [markerDraggable]='true' [iconUrl]="icon"></agm-marker>
+        <agm-marker [latitude]="53.684562" [longitude]="9.154961" [markerDraggable]='true' [iconUrl]="icon"></agm-marker>
+        <agm-marker [latitude]="50.647217" [longitude]="6.154961" [markerDraggable]='true' [iconUrl]="icon"></agm-marker>
+        <agm-marker [latitude]="48.753126" [longitude]="11.64681" [markerDraggable]='true' [iconUrl]="icon"></agm-marker>
+        <agm-marker [latitude]="48.753126" [longitude]="15.24567" [markerDraggable]='true' [iconUrl]="icon"></agm-marker>
+
+      </agm-map>
+    </div>
+
+    <div class="row mb0">
+      <div class="col-md-3">
+        <div class="card">
+          <h3 class="card-title float-right">36</h3>
+          <div class="card-content float-left">
+            <p class="category mb5">Drivers</p>
+            <a routerLink="/driver">View Drivers&nbsp;
+              <i class="fa fa-chevron-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="card-title float-right">36</h3>
+          <div class="card-content float-left">
+            <p class="category mb5">Drivers</p>
+            <a routerLink="/approval">View Drivers&nbsp;
+              <i class="fa fa-chevron-circle-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <h3 class="card-title float-right">36</h3>
+          <div class="card-content float-left">
+            <p class="category mb5">Off Duty Drivers</p>
+            <a routerLink="/driver">View Drivers&nbsp;
+              <i class="fa fa-chevron-circle-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="assets/img/dashboard/chart1.png" width="100%">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="assets/img/dashboard/chart2.png" width="100%">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="assets/img/dashboard/chart3.png" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

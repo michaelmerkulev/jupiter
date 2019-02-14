@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark header_bg">
+    <a class="navbar-brand" routerLink="/">
+        <img src="/assets/img/logonewwhite.png" width="180" />
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
+
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed">
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul *ngIf="!authorized">
+            <a href="https://play.google.com/store/apps/details?id=com.taxi.deals.user"><img src="../assets/img/home/app/android.png"></a>
+         </ul>
+        <ul *ngIf="!authorized">
+            <a href="https://itunes.apple.com/in/app/taxi-deals/id1273152483?mt=8"><img src="../assets/img/home/app/apple.png"></a>
+        </ul>
+        <ul *ngIf="!authorized">
+            <a routerLink="/login" translate>Sign in</a>
+        </ul>
+        <ul *ngIf="!authorized">
+            <a routerLink="/register" translate>Sign up</a>
+        </ul>
+        <ul *ngIf="!authorized">
+            <a href="http://taxideals.ch/tourist/" translate>Tourist</a>
+        </ul>
+        <ul class="navbar-nav">
+          <a routerLink="/profile" routerLinkActive="active" >  <span style="color: #FBB919" class="label label-warning" >SUPPLIER</span></a>
+        </ul>
+        &nbsp;&nbsp;
+        <ul *ngIf="show && role == 'ROLE_SUPPLIER'">
+            <span style="cursor:pointer;" class="label label-warning" (click)="goToDashboard()">Dashboard</span>
+        </ul>
+        <ul *ngIf="authorized">
+            <a (click)="logout()" translate>Logout</a>
+        </ul>
+        <ul class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <img [src]="imagePath" alt="">
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right lang">
+                <li>
+                    <a (click)="switchLanguage('en')" style="color: white">
+                        <img src="../assets/img/flag/united-kingdom-flag-icon.png" alt="" class="lang_image">English</a>
+                </li>
+                <li>
+                    <a (click)="switchLanguage('gr')" style="color: white">
+                        <img src="../assets/img/flag/germany-flag-icon.png" alt="" class="lang_image">German</a>
+                </li>
+                <li>
+                    <a (click)="switchLanguage('fr')" style="color: white">
+                        <img src="../assets/img/flag/france-flag-icon.png" alt="" class="lang_image">French</a>
+                </li>
+                <li>
+                    <a (click)="switchLanguage('it')" style="color: white">
+                        <img src="../assets/img/flag/italy-flag-icon.png" alt="" class="lang_image">Italian</a>
+                </li>
+            </ul>
+        </ul>
+        <!-- <ul class="navbar-nav">
+              <a routerLink="/" routerLinkActive="active" >
+                <i class="fa fa-sign-out"></i> Logout</a>
+            </ul> -->
+    </div>
+</nav>
+<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+<app-sidebar></app-sidebar>
+<app-loader></app-loader>
+<router-outlet></router-outlet>

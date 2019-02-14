@@ -1,0 +1,38 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <form #form="ngForm">
+
+      <div class=form-group>
+      </div>
+      <div class="boxes">
+        <div class="content table-responsive table-full-width">
+          <table class="table table-bordered table-hover">
+            <tr>
+              <th class="info">Index</th>
+
+              <th>Basefare</th>
+              <th>Destination</th>
+              <th>Km</th>
+              <th>Price</th>
+              <th>Source</th>
+              <th>TotalPrice</th>
+              <th>Action</th>
+            </tr>
+            <tr *ngFor="let exp of outputdata;let i=index ">
+              <td>{{i+1}}</td>
+              <td>{{exp.base}}</td>
+              <td>{{exp.destination}}</td>
+              <td>{{exp.km}}</td>
+              <td>{{exp.price}}</td>
+              <td>{{exp.source}}</td>
+              <td>{{exp.userTotalPrice}}</td>
+              <td style="width: 80px">
+                <i class="fa fa-search action" (click)="onShow(exp.id)"></i>
+               </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
