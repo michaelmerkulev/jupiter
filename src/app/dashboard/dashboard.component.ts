@@ -11,7 +11,7 @@ import { element } from '@angular/core/src/render3/instructions';
 import { Key } from 'protractor';
 // import { } from 'googlemaps';
 
-export interface Item { id: string; online: boolean; LOCATION:any;}
+export interface Item { id: string; online: boolean; LOCATION: any; }
 
 @Component({
 	selector: 'app-dashboard',
@@ -27,8 +27,8 @@ export class DashboardComponent implements OnInit {
 	onlineDatas = [];
 	offlineDatas = [];
 	mapDataMode = 'offline';
-	lat : string;
-	lng : string;
+	lat: string;
+	lng: string;
 	source: string;
 	zoom = 10;
 	icon = '';
@@ -102,9 +102,8 @@ export class DashboardComponent implements OnInit {
 	online = {
 		LOCATION: '',
 		ID: ''
-	}
+	};
 	Onlinedata: {};
-	
 	constructor(
 		private sidebar: SidebarService,
 		private searchService: SearchService,
@@ -125,13 +124,10 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit() {
 		console.log(this.role);
-		if(this.role == null)
-			this.router.navigate(['login']);
+		// if(this.role == null)
+		// 	this.router.navigate(['login']);
 		this.sidebar.show();
-	
 			}
-
-			
 
 	subscribeLiveMode() {
 		this.liveSubscription = Observable.interval(5000).subscribe(x => {
@@ -156,27 +152,22 @@ export class DashboardComponent implements OnInit {
 
 	onlineTaxi(lat?, lng?) {
 		let i;
-	
 
 		if (lat) {
-
 			// this.item = this.itemDoc.valueChanges();
 			this.itemsCollection = this.fireStore.collection<Item>('DRIVER_STATUS');
 			// this.items = this.itemsCollection.valueChanges();
 			this.items = this.itemsCollection.snapshotChanges().pipe(map(actions => actions.map(a => {
 				const data = a.payload.doc.data() as Item;
 				const id = a.payload.doc.id;
-				for (i = 0; i < this.taxiArray.length; i++) {
-                        
-                    if (data.id !== this.taxiArray[i].driverId) {
-						console.log('2.Unavailable', data.id);
-   
-                    } else  {
-                        console.log('1.Unavailable', data.id);
-                    }
-                
-                    }
-
+		    for (i = 0; i < this.taxiArray.length; i++) {
+          if (data.id !== this.taxiArray[i].driverId) {
+            console.log('2.Unavailable', data.id);
+          }
+          else{
+            console.log('1.Unavailable', data.id);
+          }
+        }
 				return { id, ...data };
 			}))
 		);
