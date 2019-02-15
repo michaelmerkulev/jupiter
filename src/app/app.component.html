@@ -23,8 +23,8 @@
         <ul *ngIf="!authorized">
             <a href="http://taxideals.ch/tourist/" translate>Tourist</a>
         </ul>
-        <ul class="navbar-nav">
-          <a routerLink="/profile" routerLinkActive="active" >  <span style="color: #FBB919" class="label label-warning" >SUPPLIER</span></a>
+        <ul class="navbar-nav" *ngIf="user_role != ''">
+          <a routerLink="/profile" routerLinkActive="active" >  <span style="color: #FBB919" class="label label-warning" >{{user_role}}</span></a>
         </ul>
         &nbsp;&nbsp;
         <ul *ngIf="show && role == 'ROLE_SUPPLIER'">
@@ -64,6 +64,6 @@
     </div>
 </nav>
 <toaster-container [toasterconfig]="toasterconfig"></toaster-container>
-<app-sidebar *ngIf="authorized"></app-sidebar>
+<app-sidebar></app-sidebar>
 <app-loader></app-loader>
 <router-outlet></router-outlet>

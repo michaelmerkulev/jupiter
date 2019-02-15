@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
 	path = '../assets/img/flag/';
 	modifiedRoleName: any;
 	show = false;
+	user_role = '';
 
 	constructor(
 		public http: HttpClient,
@@ -48,6 +49,12 @@ export class AppComponent implements OnInit {
 			this.role = localStorage.getItem('role');
 			if (this.role) {
 				this.modifiedRoleName = this.role.slice(5);
+				switch (this.role) {
+          case 'ROLE_SUPPLIER': this.user_role = 'SUPPLIER'; break;
+          case 'ROLE_ADMIN': this.user_role = 'ADMIN'; break;
+          case 'ROLE_USER': this.user_role = 'USER'; break;
+          case 'ROLE_DRIVER': this.user_role = 'DRIVER'; break;
+        }
 			}
 		});
 
@@ -70,6 +77,7 @@ export class AppComponent implements OnInit {
 		this.isCollapsed = this.global.isCollapsed;
 		this.eventsService.on('logout', () => {
 			this.authorized = false;
+			this.user_role = '';
 		});
 		this.eventsService.on('signUp', () => {
 			this.authorized = true;
