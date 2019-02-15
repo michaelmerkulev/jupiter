@@ -102,9 +102,8 @@ export class LoginComponent implements OnInit {
 	loginUser() {
 		this.submitted = true;
         // stop here if form is invalid
-        if (this.signInForm.invalid) {
-            return;
-		}
+    if (this.hide && this.signInForm.invalid) { return; }
+    if (!this.hide && (this.signInForm.controls.email.invalid || this.signInForm.controls.role.invalid || this.signInForm.controls.password.invalid)) return;
 		
 		this.eventsService.broadcast('loader:show');
 		this.auth.signinUser(this.signInForm.controls['email'].value, this.signInForm.controls['password'].value, this.signInForm.controls['role'].value, this.website).subscribe(
