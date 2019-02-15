@@ -10,9 +10,6 @@ export class SidebarService {
 
   hide() { this.visible = false; }
 
-  show() {
-    let auth = localStorage.getItem('authorized');
-    if (auth) this.visible = true;
-  }
+  show() { this.visible = true; }
 
   toggle() { this.visible = !this.visible; } }

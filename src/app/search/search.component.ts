@@ -63,7 +63,8 @@ export class SearchComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.sidebar.show();
+    let auth = localStorage.getItem('authorized');
+    if (auth) this.sidebar.show();
 		this.mapsApiLoader.load().then(
 			() => {
 				let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['geocode'] });
