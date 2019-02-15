@@ -64,6 +64,6 @@
     </div>
 </nav>
 <toaster-container [toasterconfig]="toasterconfig"></toaster-container>
-<app-sidebar></app-sidebar>
+<app-sidebar *ngIf="authorized"></app-sidebar>
 <app-loader></app-loader>
 <router-outlet></router-outlet>
