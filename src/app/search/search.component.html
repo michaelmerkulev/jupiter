@@ -1,6 +1,6 @@
 <div class="content-wrapper mtop search-main">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="container">
-    <h5 class="text-center">Search for Taxis</h5>
+    <h5 class="text-center">{{'Search for Taxis' | translate}}</h5>
     <div class="row">
       <div class="form-group col-sm-4 col-xs-12">
         <input type="text" placeholder="{{'Source Address' | translate}}" autocorrect="off" autocapitalize="off" spellcheck="off"
@@ -14,7 +14,7 @@
       </div>
       <div class="col-sm-3  col-xs-12">
         <select class="form-control" formControlName="cartype" id="cartype" name="cartype">
-          <option vlaue="item" *ngFor="let item of ['All','Taxi','Transport','Taxi6','Taxi4']">{{item}}</option>
+          <option vlaue="item" *ngFor="let item of ['All','Taxi','Transport','Taxi6','Taxi4']">{{item | translate}}</option>
         </select>
       </div>
       <div class="col-sm-1  col-xs-12">
@@ -95,6 +95,6 @@
 </tabset>
   </div>
   <div class="text-center" *ngIf="!show_data">
-    <b>No taxi available</b>
+    <b>{{'No taxi available' | translate }}</b>
   </div>
 </div>

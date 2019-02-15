@@ -66,10 +66,7 @@
     "FaceBook":"FaceBook",
     "Twitter":"cinguettio",
     "Google++":"Google++",
-    "Gmail":"Gmail"
-
-
-
-
-
+    "Gmail":"Gmail",
+    "Search for Taxis": "Cerca taxi",
+    "No taxi available": "Nessun taxi disponibile"
 }

@@ -66,5 +66,7 @@
     "FaceBook":"FaceBook",
     "Twitter":"Twitter",
     "Google++":"Google++",
-    "Gmail":"Gmail"
+    "Gmail":"Gmail",
+    "Search for Taxis": "Search for Taxis",
+    "No taxi available": "No taxi available"
 }
