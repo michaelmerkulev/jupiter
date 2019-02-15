@@ -115,7 +115,7 @@
                             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
                             <thead>
                             <tr >
-                                <th class="hidden">Id</th>
+                                <!--<th class="hidden">Id</th>-->
                                 <th>Name</th>
                                 <th>Driver Status</th>
                                 <th>CarType</th>
@@ -123,20 +123,22 @@
                                 <th>Price</th>
                                 <th>BasePrice</th>
                                 <th>Star</th>
-                                <th>WaitingTime</th>
-                                                           </tr>
+                                <!--<th>WaitingTime</th>-->
+                                <th>Action</th>
+                             </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                               <td class="hidden">{{taxi.id}}</td>
+                               <!--<td class="hidden">{{taxi.id}}</td>-->
                                
-                                <td class="center">{{taxi.name}} </td>
-                                <td class="center">{{taxi.driverStatus}}</td>
-                                <td class="center">{{taxi.cartype}}</td>
-                                <td class="center">{{taxi.phoneNumber}}</td>
-                                <td class="center">{{taxi.price}}</td>
-                                <td class="center">{{taxi.basePrice}}</td> 
-                                <td class="center">{{taxi.star}}</td>
+                                <td class="center"><input [(ngModel)]="taxi.name" title="Name"></td>
+                                <td class="center"><input [(ngModel)]="taxi.driverStatus" title="Status"></td>
+                                <td class="center"><input [(ngModel)]="taxi.cartype" title="Car type"></td>
+                                <td class="center"><input [(ngModel)]="taxi.phoneNumber" title="Phone number"></td>
+                                <td class="center"><input type="number" [(ngModel)]="taxi.price" title="Price"></td>
+                                <td class="center"><input type="number" [(ngModel)]="taxi.basePrice" title="Base price"></td>
+                                <td class="center"><input type="number" [(ngModel)]="taxi.star" title="Star"></td>
+                                <td class="center"><button (click)="saveEdit(taxi)" type="button" class="btn btn-success">Save</button></td>
                                 <td class="center"><button (click)="hideElement = !hideElement" type="button" class="btn btn-info">Cancel</button></td>
                                 </tr>
                                 </tbody>

@@ -9,6 +9,8 @@ import { map } from '../../../node_modules/rxjs/operators';
 import { Router } from '@angular/router';
 import { element } from '@angular/core/src/render3/instructions';
 import { Key } from 'protractor';
+import {DriverService} from "../driver.service";
+import {ToasterService} from "angular2-toaster";
 // import { } from 'googlemaps';
 
 export interface Item { id: string; online: boolean; LOCATION: any; }
@@ -37,11 +39,13 @@ export class DashboardComponent implements OnInit {
 	taxiArray: any[];
 	Name: '';
 	taxi = {
-		id: '',
+		id: 0,
 		name: '',
 		driverStatus: '',
 		phoneNumber: '',
-		basePrice: '',
+		basePrice: 0,
+    price: 0,
+    star: 0,
 		cartype: '',
 	};
 
@@ -112,6 +116,8 @@ export class DashboardComponent implements OnInit {
 		private ngZone: NgZone,
 		private fireStore: AngularFirestore,
 		private router: Router,
+    private Driver: DriverService,
+    private toasterService: ToasterService
 	) {
 
 		this.role = localStorage.getItem('role');
@@ -248,10 +254,14 @@ export class DashboardComponent implements OnInit {
 					let entry = this.taxiArray[i];
 					console.log('Entry value', entry);
 					if ( id === this.taxiArray[i].id) {
+					  this.taxi.id = this.taxiArray[i].id;
 						this.taxi.name = this.taxiArray[i].name;
 						this.taxi.driverStatus = this.taxiArray[i].driverStatus;
 						this.taxi.phoneNumber = this.taxiArray[i].phoneNumber;
 						this.taxi.cartype = this.taxiArray[i].cartype;
+						this.taxi.basePrice = this.taxiArray[i].basePrice;
+						this.taxi.price = this.taxiArray[i].price;
+						this.taxi.star = this.taxiArray[i].star;
 
 						console.log('Objechhhht id', this.taxiArray[i].name);
 						return true;
@@ -338,5 +348,17 @@ export class DashboardComponent implements OnInit {
 		this.edited = false;
 	}
 
+  saveEdit(taxi) {
+    this.Driver.editDriver(taxi).subscribe(res => {
+
+      this.toasterService.pop('success', 'Success', 'Driver Details Updated Successfully.');
+      this.edited = false;
+      this.getMyTaxis();
+      this.eventsService.broadcast('loader:hide');
+    }, err => {
+      this.eventsService.broadcast('loader:hide');
+      this.toasterService.pop('error', 'Error', 'Something went wrong.');
+    });
+  }
 }
 
