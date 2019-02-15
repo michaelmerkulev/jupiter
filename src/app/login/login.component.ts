@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
 		this.Email = '';
 		this.Password = '';
 		this.signInForm = this.formBuilder.group({
-			email: ['', Validators.required],
+			email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.%+-]+\\.[a-z]{2,4}$')]],
 			password: ['', Validators.required],
 			role: ['', Validators.required],
         });

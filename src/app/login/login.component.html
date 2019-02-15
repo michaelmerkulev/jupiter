@@ -10,10 +10,11 @@
           </div>
           <form class="form" [formGroup]="signInForm" (ngSubmit)="loginUser()">
             <div class="form-group" >
-              <input required id="Email" formControlName="email" type="email" class="form-control" 
+              <input id="Email" formControlName="email" class="form-control"
                 placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                   <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
                 </div>
             </div>
             <div class="form-group" >

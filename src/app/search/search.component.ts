@@ -180,7 +180,9 @@ export class SearchComponent implements OnInit {
 				// });
 
 				this.searchService.setResultData(this.outputData);
-				this.show_data = true;
+				if (this.outputData.length !== 0) {
+				  this.show_data = true;
+        }
 			}, err => {
 				console.log(err);
 				this.eventsService.broadcast('loader:hide');

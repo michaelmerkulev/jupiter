@@ -22,77 +22,79 @@
       </div>
     </div>
   </form>
- 
-  <div class="row search-area container" *ngIf="show_data">
 
+  <div class="row search-area container" *ngIf="show_data">
     <tabset>
-      <tab class="mt-2">
-        <ng-template tabHeading>
-          <i class="fa fa-table" aria-hidden="true"></i>
-        </ng-template>
-       <!-- <div class="row" infinite-scroll
-        [infiniteScrollDistance]="4"
-        [infiniteScrollThrottle]="1000"
-        (scrolled)="loadMoreData()">-->
-        <div class=" row">
-          <div class="col-md-3 my-card" *ngFor="let exp of outputData;let i=index" (click)="onSelete(exp.id, exp.driverId)">
-            <div class="boxes search-item" >
-              <div class="row info-padding">
-                <div class="col-sm-12 driver-info driver-img" *ngIf="exp.imageInfo && exp.imageInfo.imageUrl">
-                  <img [src]="exp.imageInfo.imageUrl" class="img-responsive" onError="this.src = '../../assets/img/minilogo.png'">
-                </div>
-                <div class="col-sm-12 driver-info driver-img" *ngIf="!exp.imageInfo">
-                  <img [src]="'../../assets/img/minilogo.png'" class="img-responsive">
-                </div>
-                <div class="col-sm-12 driver-info">
-                  <div class="titleInfo" translate>Name</div>
-                  <div class="info">{{exp.name}}</div>
-                </div>
-                <div class="col-sm-12 driver-info">
-                  <div class="titleInfo" translate>Phone</div>
-                  <div class="info">{{exp.phoneNumber}}</div>
-                </div>
-               <div class="col-sm-6 driver-info">
-                  <div class="titleInfo" translate>Car Type</div>
-                  <div class="info">{{exp.cartype}} </div>
-                </div>
-                <div class="col-sm-6 driver-info">
-                  <div class="titleInfo" translate> <br></div>
-                  <li style="list-style-type:none; vertical-align: middle;" >
-                         <img src="/assets/img/type/{{exp.cartype}}.png" alt="" class="img-responsive">
-                    </li>
-                </div>
-                
-                </div>
-            </div>
+    <tab class="mt-2">
+      <ng-template tabHeading>
+        <i class="fa fa-table" aria-hidden="true"></i>
+      </ng-template>
+     <!-- <div class="row" infinite-scroll
+      [infiniteScrollDistance]="4"
+      [infiniteScrollThrottle]="1000"
+      (scrolled)="loadMoreData()">-->
+      <div class=" row">
+        <div class="col-md-3 my-card" *ngFor="let exp of outputData;let i=index" (click)="onSelete(exp.id, exp.driverId)">
+          <div class="boxes search-item" >
+            <div class="row info-padding">
+              <div class="col-sm-12 driver-info driver-img" *ngIf="exp.imageInfo && exp.imageInfo.imageUrl">
+                <img [src]="exp.imageInfo.imageUrl" class="img-responsive" onError="this.src = '../../assets/img/minilogo.png'">
+              </div>
+              <div class="col-sm-12 driver-info driver-img" *ngIf="!exp.imageInfo">
+                <img [src]="'../../assets/img/minilogo.png'" class="img-responsive">
+              </div>
+              <div class="col-sm-12 driver-info">
+                <div class="titleInfo" translate>Name</div>
+                <div class="info">{{exp.name}}</div>
+              </div>
+              <div class="col-sm-12 driver-info">
+                <div class="titleInfo" translate>Phone</div>
+                <div class="info">{{exp.phoneNumber}}</div>
+              </div>
+             <div class="col-sm-6 driver-info">
+                <div class="titleInfo" translate>Car Type</div>
+                <div class="info">{{exp.cartype}} </div>
+              </div>
+              <div class="col-sm-6 driver-info">
+                <div class="titleInfo" translate> <br></div>
+                <li style="list-style-type:none; vertical-align: middle;" >
+                       <img src="/assets/img/type/{{exp.cartype}}.png" alt="" class="img-responsive">
+                  </li>
+              </div>
+
+              </div>
           </div>
         </div>
-      </tab>
-      <tab class="mt-2">
-        <ng-template tabHeading>
-          <i class="fa fa-list-ul" aria-hidden="true"></i>
-        </ng-template>
-        <div class="content table-responsive table-full-width">
-          <h3 class="card-header text-center font-weight-bold text-uppercase py-4">AVAILABLE DRIVER</h3>
-          <table class="table table-bordered table-hover center">
-            <tr bgcolor="#ff6347">
-              <th class="info" translate>Index</th>
-              <th translate>Name</th>
-              <th translate>Car Type</th>
-              <th translate>Phone</th>
-             </tr>
-         
-              <ng-container *ngFor="let exp of outputData;let i=index " >
-                <tr class="center" (click)="onSelete(exp.id)">
-                  <td>{{i+1}}</td>
-                  <td translate>{{exp.name}}</td>
-                  <td translate>{{exp.cartype}} </td>
-                  <td translate>{{exp.phoneNumber}}</td>
-                </tr>
-              </ng-container>
-          </table>
-        </div>
-      </tab>
-    </tabset>
+      </div>
+    </tab>
+    <tab class="mt-2">
+      <ng-template tabHeading>
+        <i class="fa fa-list-ul" aria-hidden="true"></i>
+      </ng-template>
+      <div class="content table-responsive table-full-width">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">AVAILABLE DRIVER</h3>
+        <table class="table table-bordered table-hover center">
+          <tr bgcolor="#ff6347">
+            <th class="info" translate>Index</th>
+            <th translate>Name</th>
+            <th translate>Car Type</th>
+            <th translate>Phone</th>
+           </tr>
+
+            <ng-container *ngFor="let exp of outputData;let i=index " >
+              <tr class="center" (click)="onSelete(exp.id)">
+                <td>{{i+1}}</td>
+                <td translate>{{exp.name}}</td>
+                <td translate>{{exp.cartype}} </td>
+                <td translate>{{exp.phoneNumber}}</td>
+              </tr>
+            </ng-container>
+        </table>
+      </div>
+    </tab>
+</tabset>
+  </div>
+  <div class="text-center" *ngIf="!show_data">
+    <b>No taxi available</b>
   </div>
 </div>
