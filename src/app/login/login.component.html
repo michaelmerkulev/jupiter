@@ -33,7 +33,10 @@
               </select>
             </div>
             <div class="form-group" *ngIf="hide">
-              <input required id="website" name="website" type="type" class="form-control" placeholder="website">
+              <input required id="website" name="website" type="type" class="form-control" placeholder="website" [ngClass]="{ 'is-invalid': submitted && f.website.errors }">
+              <div *ngIf="submitted && f.website.errors" class="invalid-feedback">
+                <div *ngIf="f.website.errors.required">Website is required</div>
+              </div>
             </div>
             <!-- 
             <div class="form-group" [class.has-error]="fullNameControl.invalid" >
