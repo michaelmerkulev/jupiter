@@ -68,5 +68,9 @@
     "Google++":"Google++",
     "Gmail":"Gmail",
     "Search for Taxis": "Cerca taxi",
-    "No taxi available": "Nessun taxi disponibile"
+    "No taxi available": "Nessun taxi disponibile",
+    "First Name": "Nome di battesimo",
+    "Last Name": "Cognome",
+    "City Code": "City Code",
+    "Phone Number": "numero di telefono"
 }
